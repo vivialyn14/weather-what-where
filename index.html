@@ -7,38 +7,48 @@
     <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
-    <header>
-      <h1>
-        Welcome to <span class="app-title"><em>Weather, where, what?</em></span>
-      </h1>
-    </header>
-    <main>
-      <form>
-        <input type="search" placeholder="Enter a city..." />
-        <input type="submit" value="Search" />
-      </form>
-      <p><em>Wednesday 12th November, 15:04</em></p>
-      <h3>Current conditions in...</h3>
-      <div class="data-grid">
-        <h2>Nottingham</h2>
-        <p>
-          Light rain
-          <br />
-          <em>wind: 10mph, humidity: 23%</em>
-        </p>
-      </div>
-      <div>
-        <h2>🌧️ 12°C</h2>
-      </div>
-    </main>
-    <footer>
-      Coded by
-      <a href="https://www.shecodes.io/graduates/179915-vivialyn-joynson"
-        >Viv for SheCodes</a
-      >, hosted on
-      <a href="https://github.com/vivialyn14/weather-what-where">GitHub</a> and
-      Netlify
-    </footer>
+    <div class="container">
+      <header>
+        <h1><em>Weather, where, what?</em></h1>
+      </header>
+      <main>
+        <form>
+          <input
+            type="search"
+            class="search-bar"
+            placeholder="Enter a city..."
+          />
+          <input type="submit" class="search-button" value="Search" />
+        </form>
+        <p class="date-time">Wednesday 12th November, 15:04</p>
+        <h3>Current conditions in...</h3>
+        <div class="data-grid">
+          <div>
+            <h2 class="weather-app-city">Nottingham</h2>
+            <p>
+              Light rain
+              <br />
+              <em>wind: 10mph, humidity: 23%</em>
+            </p>
+          </div>
+          <div>
+            <h2 class="weather-app-temperature">
+              <span class="emoji">🌧️</span>
+              <span class="temp-value">12</span>
+              <span class="temp-unit">°C</span>
+            </h2>
+          </div>
+        </div>
+      </main>
+      <footer>
+        Coded by
+        <a href="https://www.shecodes.io/graduates/179915-vivialyn-joynson"
+          >Viv for SheCodes</a
+        >, hosted on
+        <a href="https://github.com/vivialyn14/weather-what-where">GitHub</a>
+        and <a href="https://weather-what-where.netlify.app/">Netlify</a>
+      </footer>
+    </div>
     <script src="src/script.js"></script>
   </body>
 </html>
