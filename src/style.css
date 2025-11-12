@@ -12,9 +12,9 @@ h1 {
   background-color: white;
   box-shadow: 0px 38px 50px #eedbac;
   border-radius: 10px;
-  padding: 15px;
+  padding: 20px 40px;
   margin: 30px auto;
-  max-width: 600px;
+  max-width: 550px;
 }
 
 form {
@@ -63,6 +63,8 @@ footer {
   font-size: 13px;
   opacity: 0.7;
   font-family: sans-serif;
+  padding: 20px 0px 10px 0px;
+  border-top: 1px solid rgb(145, 95, 114, 0.2);
 }
 
 a {
@@ -77,23 +79,47 @@ h3 {
 .weather-app-city {
   color: #3a2c25;
   margin-top: 5px;
-  font-size: 36px;
-  line-height: 40px;
-}
-
-.weather-app-temperature {
-  color: #3a2c25;
+  margin-bottom: 0px;
   font-size: 36px;
   line-height: 40px;
   font-family: sans-serif;
 }
 
+.main-details-container {
+  display: flex;
+  font-family: sans-serif;
+}
+
+.emoji {
+  font-size: 26px;
+  margin: 10px 15px;
+}
+
+.temp-value {
+  color: #3a2c25;
+  font-size: 40px;
+  font-weight: bold;
+}
+
 .temp-unit {
-  font-size: 20px;
-  font-weight: normal;
+  margin-top: 8px;
 }
 
 .data-grid {
   display: flex;
   justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.weather-app-details {
+  opacity: 0.8;
+}
+
+.description {
+  font-size: 20px;
+}
+
+.details-numbers {
+  color: rgb(173, 89, 103);
+  font-weight: bold;
 }
