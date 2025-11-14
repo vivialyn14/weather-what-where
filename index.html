@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>☀️ Weather, what, where?</title>
     <link rel="stylesheet" href="src/style.css" />
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="container">
@@ -18,6 +19,7 @@
             class="search-bar"
             id="search-bar"
             placeholder="Enter a city..."
+            required
           />
           <input type="submit" class="search-button" value="Search" />
         </form>
@@ -25,19 +27,25 @@
         <h3>Current conditions in...</h3>
         <div class="data-grid">
           <div>
-            <h2 class="weather-app-city">Nottingham</h2>
+            <span class="weather-app-city" id="city-name"> Nottingham </span>
+            <span class="country" id="country">UK</span>
+
             <p class="weather-app-details">
-              <span class="description">Light rain</span>
+              <span class="description" id="weather-description"
+                >Light rain</span
+              >
               <br />
               <em
-                >wind: <span class="details-numbers">10mph</span>, humidity:
-                <span class="details-numbers">23%</span></em
+                >wind:
+                <span class="details-numbers" id="wind-speed">10mph</span>,
+                humidity:
+                <span class="details-numbers" id="humidity">23%</span></em
               >
             </p>
           </div>
           <div class="main-details-container">
             <div class="emoji">🌧️</div>
-            <div class="temp-value">12</div>
+            <div class="temp-value" id="temp-value">12</div>
             <div class="temp-unit">°C</div>
           </div>
         </div>
