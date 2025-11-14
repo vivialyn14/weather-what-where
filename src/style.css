@@ -52,7 +52,7 @@ form {
   cursor: pointer;
 }
 
-.date-time {
+.date-time-info {
   text-align: center;
   font-style: italic;
   opacity: 0.7;
@@ -101,24 +101,28 @@ h3 {
 }
 
 .emoji {
-  font-size: 26px;
-  margin: 10px 15px;
+  height: 75px;
 }
 
 .temp-value {
   color: #3a2c25;
   font-size: 40px;
   font-weight: bold;
+  margin: 15px 0px;
 }
 
 .temp-unit {
-  margin-top: 8px;
+  margin-top: 20px;
 }
 
 .data-grid {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 10px;
+  padding: 10px 0px;
+}
+
+.main-text {
+  margin: 10px 0px;
 }
 
 .weather-app-details {

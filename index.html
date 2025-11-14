@@ -23,13 +23,16 @@
           />
           <input type="submit" class="search-button" value="Search" />
         </form>
-        <p class="date-time">Wednesday 12th November, 15:04</p>
+        <p class="date-time-info" id="date-time-info">
+          Wednesday 12th November, 15:04
+        </p>
         <h3>Current conditions in...</h3>
         <div class="data-grid">
           <div>
-            <span class="weather-app-city" id="city-name"> Nottingham </span>
-            <span class="country" id="country">UK</span>
-
+            <div class="main-text">
+              <span class="weather-app-city" id="city-name"> Nottingham </span>
+              <span class="country" id="country">UK</span>
+            </div>
             <p class="weather-app-details">
               <span class="description" id="weather-description"
                 >Light rain</span
@@ -44,7 +47,13 @@
             </p>
           </div>
           <div class="main-details-container">
-            <div class="emoji">🌧️</div>
+            <div class="emoji-container" id="emoji-container">
+              <img
+                class="emoji"
+                id="emoji"
+                src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/scattered-clouds-day.png"
+              />
+            </div>
             <div class="temp-value" id="temp-value">12</div>
             <div class="temp-unit">°C</div>
           </div>

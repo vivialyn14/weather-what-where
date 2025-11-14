@@ -14,10 +14,12 @@ function newCity(event) {
     let tempData = Math.round(response.data.temperature.current);
     let tempValue = document.querySelector("#temp-value");
     tempValue.innerHTML = tempData;
+
     //change city & country
     let cityName = document.querySelector("#city-name");
     cityName.innerHTML = response.data.city;
     let countryName = document.querySelector("#country");
+
     //countryName.innerHTML = response.data.country;
     let shortCountry = {
       "United Kingdom of Great Britain and Northern Ireland": "UK",
@@ -34,11 +36,16 @@ function newCity(event) {
     //change description
     let description = document.querySelector("#weather-description");
     description.innerHTML = response.data.condition.description;
+
     //change details
     let windSpeed = document.querySelector("#wind-speed");
     let humidity = document.querySelector("#humidity");
     windSpeed.innerHTML = `${Math.round(response.data.wind.speed)} m/s`;
     humidity.innerHTML = `${response.data.temperature.humidity}%`;
+
+    //change emoji
+    let emoji = document.querySelector("#emoji");
+    emoji.src = response.data.condition.icon_url;
   }
 
   axios.get(apiUrl).then(getWeather);
@@ -47,7 +54,5 @@ function newCity(event) {
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", newCity);
 
-// click submit to:
-//   search for a new city
-//   change h2 to searched city
-//   change temp-value to current temp according to API
+let currentDate = new Date();
+let dateTimeInfo = document.querySelector("");
