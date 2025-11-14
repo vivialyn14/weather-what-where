@@ -54,5 +54,43 @@ function newCity(event) {
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", newCity);
 
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+let months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
 let currentDate = new Date();
-let dateTimeInfo = document.querySelector("");
+let dateTimeInfo = document.querySelector("#date-time-info");
+
+let day = days[currentDate.getDay()];
+let date = currentDate.getDate();
+let month = months[currentDate.getMonth()];
+let hour = currentDate.getHours();
+let minute = currentDate.getMinutes();
+
+if (date[date.length] - 1 == 1) {
+  dateTimeInfo.innerHTML = `${day} ${date}st ${month}, ${hour}:${minute}`;
+} else if (date[date.length] - 1 == 3) {
+  dateTimeInfo.innerHTML = `${day} ${date}rd ${month}, ${hour}:${minute}`;
+} else {
+  dateTimeInfo.innerHTML = `${day} ${date}th ${month}, ${hour}:${minute}`;
+}
