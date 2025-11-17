@@ -1,3 +1,48 @@
+// live date / time
+
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+let months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+let currentDate = new Date();
+let dateTimeInfo = document.querySelector("#date-time-info");
+
+let day = days[currentDate.getDay()];
+let date = currentDate.getDate();
+let month = months[currentDate.getMonth()];
+let hour = currentDate.getHours();
+let minute = currentDate.getMinutes();
+
+if (date[date.length] - 1 == 1) {
+  dateTimeInfo.innerHTML = `${day} ${date}st ${month}, ${hour}:${minute}`;
+} else if (date[date.length] - 1 == 3) {
+  dateTimeInfo.innerHTML = `${day} ${date}rd ${month}, ${hour}:${minute}`;
+} else {
+  dateTimeInfo.innerHTML = `${day} ${date}th ${month}, ${hour}:${minute}`;
+}
+
+// search a city, get the weather
+
 function newCity(event) {
   //prevent page reload
   event.preventDefault();
@@ -46,6 +91,9 @@ function newCity(event) {
     //change emoji
     let emoji = document.querySelector("#emoji");
     emoji.src = response.data.condition.icon_url;
+
+    //update 5-day forecast for searched city
+    getForecast(response.data.city);
   }
 
   axios.get(apiUrl).then(getWeather);
@@ -54,67 +102,50 @@ function newCity(event) {
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", newCity);
 
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
+// convert timestamp to day names in the forecast
 
-let currentDate = new Date();
-let dateTimeInfo = document.querySelector("#date-time-info");
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-let day = days[currentDate.getDay()];
-let date = currentDate.getDate();
-let month = months[currentDate.getMonth()];
-let hour = currentDate.getHours();
-let minute = currentDate.getMinutes();
-
-if (date[date.length] - 1 == 1) {
-  dateTimeInfo.innerHTML = `${day} ${date}st ${month}, ${hour}:${minute}`;
-} else if (date[date.length] - 1 == 3) {
-  dateTimeInfo.innerHTML = `${day} ${date}rd ${month}, ${hour}:${minute}`;
-} else {
-  dateTimeInfo.innerHTML = `${day} ${date}th ${month}, ${hour}:${minute}`;
+  return days[date.getDay()];
 }
 
-function displayForecast() {
-  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+// display forecast for next 5 days
+
+function displayForecast(response) {
+  console.log(response.data);
+
   let forecastHtml = "";
 
-  days.forEach(function (day) {
-    forecastHtml += `<div class="weather-forecast-day-container">
-        <div class="weather-forecast-day-title">${day}</div>
-        <div class="weather-forecast-day-emoji">⛅</div>
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHtml += `<div class="weather-forecast-day-container">
+        <div class="weather-forecast-day-title">${formatDay(day.time)}</div>
+        <div class="weather-forecast-icon">
+          <img src="${day.condition.icon_url}" />
+        </div>
         <div class="weather-forecast-day-temperatures">
           <div class="weather-forecast-day-temperature">
-            <strong>12°C</strong>
+            <strong>${Math.round(day.temperature.maximum)}°C</strong>
           </div>
-          <div class="weather-forecast-day-temperature">6°C</div>
+          <div class="weather-forecast-day-temperature">${Math.round(
+            day.temperature.minimum
+          )}°C</div>
         </div>
       </div>
     `;
+    }
   });
 
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = forecastHtml;
+}
+
+function getForecast(city) {
+  let apiKey = "1dd3bcb8741dt0aoe047389dbb6b5df4";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios(apiUrl).then(displayForecast);
 }
 
 displayForecast();
