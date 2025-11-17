@@ -94,3 +94,27 @@ if (date[date.length] - 1 == 1) {
 } else {
   dateTimeInfo.innerHTML = `${day} ${date}th ${month}, ${hour}:${minute}`;
 }
+
+function displayForecast() {
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+  let forecastHtml = "";
+
+  days.forEach(function (day) {
+    forecastHtml += `<div class="weather-forecast-day-container">
+        <div class="weather-forecast-day-title">${day}</div>
+        <div class="weather-forecast-day-emoji">⛅</div>
+        <div class="weather-forecast-day-temperatures">
+          <div class="weather-forecast-day-temperature">
+            <strong>12°C</strong>
+          </div>
+          <div class="weather-forecast-day-temperature">6°C</div>
+        </div>
+      </div>
+    `;
+  });
+
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = forecastHtml;
+}
+
+displayForecast();

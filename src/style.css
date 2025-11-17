@@ -137,3 +137,40 @@ h3 {
   color: rgb(173, 89, 103);
   font-weight: bold;
 }
+
+.weather-forecast-app {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  margin: 10px 0px 25px;
+  font-family: sans-serif;
+}
+
+.weather-forecast-day-title {
+  opacity: 0.7;
+  color: grey;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.weather-forecast-day-container {
+  text-align: center;
+}
+
+.weather-forecast-day-emoji {
+  font-size: 28px;
+  margin-top: 5px;
+}
+
+.weather-forecast-day-temperatures {
+  display: flex;
+  justify-content: space-around;
+  opacity: 0.7;
+  color: rgb(128, 62, 73);
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.weather-forecast-day-temperature {
+  margin: 0px 5px;
+}
